@@ -1,0 +1,12 @@
+repos:
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0 # Use a specific version or 'master' to always fetch the latest version
+  hooks:
+  - id: trailing-whitespace
+    args: [--markdown-linebreak-ext=md]
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+    args: [--fix=lf]
+  - id: check-yaml
+    args: [--allow-multiple-documents]

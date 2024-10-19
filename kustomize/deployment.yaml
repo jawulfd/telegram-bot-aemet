@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegram-bot-aemet
+  labels:
+    name: telegram-aemet-bot-deployment
+    tier: telegram-bots
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: telegram-bot-aemet
+  template:
+    metadata:
+      labels:
+        app: telegram-bot-aemet
+    spec:
+      containers:
+      - image: jauwlfd/telegram-bot-images:aemet-bot-arm64
+        name: telegram-bot-aemet
+        imagePullPolicy: Always
+
+      imagePullSecrets:
+      - name: regcred
